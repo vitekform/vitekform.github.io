@@ -1,0 +1,2 @@
+config.lang: en_us
+data.modules.trashometer: false
