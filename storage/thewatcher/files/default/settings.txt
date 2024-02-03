@@ -1,1 +1,0 @@
-protection.antinsfw.delete_msg: true
