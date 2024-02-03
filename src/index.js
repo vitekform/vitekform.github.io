@@ -1,5 +1,5 @@
 $(function() {
-    $.getJSON("https://vitekform.github.io/builds/resources/repos.json", repos => {
+    $.getJSON("https://vitekform.github.io/resources/repos.json", repos => {
         $("#repos").html("");
         let profiles = [];
 
