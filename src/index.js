@@ -50,7 +50,6 @@ function addProfile(user, repos) {
         let projectType = repos[repo].options && repos[repo].options.abandoned ? "abandoned" : "alive";
         addRepository(table, directory, user, repository, branch, projectType);
     }
-
     // Alphabetical sorting (abandoned projects to the bottom)
     $(table).append(table.children("tr").sort((a, b) => sortProjects($(a), $(b))));
 }
@@ -65,8 +64,7 @@ function addRepository(table, directory, owner, repo, branch, projectType) {
                 <a class="link_info" href="${directory}">${repo} (${branch})${projectType == 'abandoned' ? " [abandoned]" : ""}</a>
             </td>
             <td>
-            //Wtf
-                <img class="badge" alt="project badge" src="https://vitekform.github.io/test/${directory}/badge.svg" />
+                <img class="badge" alt="project badge" src="https://vitekform.github.io/${directory}/badge.svg" />
             </td>
         </tr>
     `);
