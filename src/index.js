@@ -65,7 +65,8 @@ function addRepository(table, directory, owner, repo, branch, projectType) {
                 <a class="link_info" href="${directory}">${repo} (${branch})${projectType == 'abandoned' ? " [abandoned]" : ""}</a>
             </td>
             <td>
-                <img class="badge" alt="project badge" src="https://vitekform.github.io/${directory}/badge.svg" />
+            //Wtf
+                <img class="badge" alt="project badge" src="https://vitekform.github.io/test/${directory}/badge.svg" />
             </td>
         </tr>
     `);
