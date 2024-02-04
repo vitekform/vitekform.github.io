@@ -187,6 +187,7 @@ function hasUpdate (job, timestamp) {
 
     if (FileSystem.existsSync(file)) {
       fs.readFile(file, 'utf8').then((data) => {
+        console.log(data)
         if (!data) {
           // Pretend like there is an Update if no local builds exist
           resolve(0)
