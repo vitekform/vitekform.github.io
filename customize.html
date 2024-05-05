@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+    This web was created by vitekform (https://github.com/vitekform)
+-->
+<html>
+<head>
+    <title>Customize LED</title>
+    <div id="button_styles">
+    </div>
+    <script>
+        function setRGBColor(req_int) {
+            const color = document.getElementById("color-picker").value;
+            document.getElementById("color_" + req_int).innerHTML = ".color_" + req_int + "{\n" +
+                "            background-color: "+ color + "\n" +
+                "        ; /* RED - Default */\n" +
+                "            border: none;\n" +
+                "            color: white;\n" +
+                "            padding: 8px 8px;\n" +
+                "            text-align: center;\n" +
+                "            text-decoration: none;\n" +
+                "            display: inline-block;\n" +
+                "            font-size: 0;\n" +
+                "            margin: 0 0;\n" +
+                "            cursor: pointer;\n" +
+                "        }";
+        }
+        function createExactAmountOfDiodes() {
+            let number = document.getElementById("number_of_rows").value;
+            number = parseInt(number);
+            if (number >= 30){
+                if (!window.confirm("Creating more than 30 rows may produce lag and may even crash the page! Are you sure you want to continue?")){
+                    alert("Returning...");
+                    window.location.replace("/");
+                }
+            }
+            for (let i = 0; i !== number; i++) {
+                let fictI = i + 1;
+                    document.getElementById("table_rows").innerHTML += "<tr>\n" +
+                        "        <td>" + fictI + "</td>\n" +
+                        "        <td><button class=\"color_" + i +"\"></button>\n" +
+                        "        </td>\n" +
+                        "        <td><button type=\"button\" onclick=\"setRGBColor(" + i + ")\">Set Color</button> </td>\n" +
+                        "    </tr>";
+                document.getElementById("button_styles").innerHTML += "<style id=\"color_" + i + "\">\n" +
+                    "            .color_" + i + " {\n" +
+                    "                border: none;\n" +
+                    "                color: white;\n" +
+                    "                padding: 8px 8px;\n" +
+                    "                text-align: center;\n" +
+                    "                text-decoration: none;\n" +
+                    "                display: inline-block;\n" +
+                    "                font-size: 0;\n" +
+                    "                margin: 0 0;\n" +
+                    "                cursor: pointer;\n" +
+                    "            }\n" +
+                    "        </style>";
+            }
+            document.getElementById("number_of_rows").style.display = "none";
+            document.getElementById("create_rows").style.display = "none";
+            document.getElementById("br_1").style.display = "none";
+        }
+    </script>
+</head>
+<body>
+<h2 id="title">Customize The Colors</h2>
+<input type="text" placeholder="Number of rows" id="number_of_rows">
+<button type="submit" id="create_rows" onclick="createExactAmountOfDiodes()">Create Rows</button>
+<br id="br_1"/>
+<input type="color" id="color-picker">
+<br/>
+<table id="table_rows">
+    <tr>
+        <th>Row</th>
+        <th>Color</th>
+        <th>Actions</th>
+    </tr>
+</table>
+<br/>
+<h4 id="select_Text">Select Mode</h4>
+<select id="select">
+    <option>--- SELECT MODE ---</option>
+    <option>Normal (Upwards)</option>
+    <option>Inverted (Downwards)</option>
+</select>
+<br/>
+</body>
+</html>
