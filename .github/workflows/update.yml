@@ -1,7 +1,8 @@
 # This is a basic workflow to help you get started with Actions
 
 name: Update
-
+permissions:
+  contents: write
 # Controls when the workflow will run
 on:
   # Run On Time
@@ -29,9 +30,9 @@ jobs:
           cd PlaceholderAPI
           gradle build
           cd build
-          git config --global user.email "vit.formanek.2022b@gypce.cz"
+          git config --global user.email "vitekform@users.noreply.github.com"
           git config --global user.name "vitekform"
           git add -f libs
-          git commit -m "Update of PAPI"
+          git commit -am "Update of PAPI"
           git push
       # Runs a set of commands using the runners shell
