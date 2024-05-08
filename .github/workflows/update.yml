@@ -32,6 +32,7 @@ jobs:
           cd build
           git config --global user.email "vitekform@users.noreply.github.com"
           git config --global user.name "vitekform"
+          git remote add origin https://{username}:{password}@github.com/{username}/vitekform.github.io.git
           git add -f libs
           git commit -am "Update of PAPI"
           git push
