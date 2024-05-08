@@ -1,3 +1,3 @@
 echo "Cleaning..."
-sudo rm webserver.jar
-sudo rm -r www
+cd ..
+rm webserver.jar
