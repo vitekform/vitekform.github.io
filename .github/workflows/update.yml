@@ -29,6 +29,8 @@ jobs:
           cd PlaceholderAPI
           gradle build
           cd build
+          git config --global user.email "vit.formanek.2022b@gypce.cz"
+          git config --global user.name "vitekform"
           git add -f libs
           git commit -m "Update of PAPI"
           git push
