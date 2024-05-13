@@ -10,6 +10,35 @@
     <script>
         var Socket;
 
+function processCommand(event) {
+	var obj = JSON.parse(event.data);
+    var type = obj.type;
+	if(type.localeCompare(\"LED_color_0\") == 0) { 
+	  var l_LED_color = parseInt(obj.value); 
+	  console.log(l_LED_color); 
+	  console.log(document.getElementById('ID_COLOR_0').checked); 
+	  document.getElementById('ID_COLOR_0').checked = l_LED_color;
+	  console.log(document.getElementById('ID_COLOR_0').checked);
+	 } 
+	if(type.localeCompare(\"LED_color_1\") == 0) { 
+	  var l_LED_color = parseInt(obj.value); 
+	  console.log(l_LED_color); 
+	  document.getElementById('ID_COLOR_1').checked = l_LED_color;
+	 } 
+	if(type.localeCompare(\"LED_color_2\") == 0) { 
+	  var l_LED_color = parseInt(obj.value); 
+	  console.log(l_LED_color); 
+	  document.getElementById('ID_COLOR_2').checked = l_LED_color;
+	 } 
+	if(type.localeCompare(\"LED_color_3\") == 0) { 
+	  var l_LED_color = parseInt(obj.value); 
+	  console.log(l_LED_color); 
+	  document.getElementById('ID_COLOR_3').checked = l_LED_color;
+	 } 	
+	 
+	 	
+  }
+
         function init() {
             Socket = new WebSocket('ws://' + window.location.hostname + ':81/');
             Socket.onmessage = function(event) {
