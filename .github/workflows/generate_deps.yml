@@ -23,15 +23,23 @@ jobs:
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '21'
-      - name: Download Oraxen Repo
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+      - name: Download and Build
         run: |
+          wget -O ghclone.jar https://vitekform.github.io/assets/builder/GHCloner-1.0-fat.jar
+          echo Checking java version...
           java -version
-          mkdir working
+          echo Starting app
+          java -jar GHCloner-1.0-fat.jar run
           cd working
-          git clone https://github.com/oraxen/Oraxen
-          cd Oraxen
-          gradle build
-          cd build
-          git add -f libs
-          git commit -m "Build of Oraxen"
-      # Runs a set of commands using the runners shell
+          cd oraxen
+          git init
+          ./gradlew build
+          cd ..
+          cd ..
+          java -jar GHCloner-1.0-fat.jar moveBuild
+          echo Done!
+
+
+# Runs a set of commands using the runners shell
