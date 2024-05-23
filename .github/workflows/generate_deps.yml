@@ -31,14 +31,14 @@ jobs:
           echo Checking java version...
           java -version
           echo Starting app
-          java -jar GHCloner-1.0-fat.jar run
+          java -jar ghclone.jar run
           cd working
           cd oraxen
           git init
           ./gradlew build
           cd ..
           cd ..
-          java -jar GHCloner-1.0-fat.jar moveBuild
+          java -jar ghclone.jar moveBuild
           echo Done!
 
 
