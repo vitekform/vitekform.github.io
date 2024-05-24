@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -22,25 +22,19 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
+          java-version: '17'
       - name: Download and Build
         run: |
-          wget -O ghclone.jar https://vitekform.github.io/assets/builder/GHCloner-1.0-fat.jar
-          echo Checking java version...
-          java -version
-          echo Starting app
-          java -jar ghclone.jar run
+          mkdir used
+          cd used
+          git clone https://github.com/vitekform/vitekform.github.io
+          cd vitekform.github.io
+          curl https://vitekform.github.io/assets/builder/GHCloner-1.0-fat.jar -o builder.jar
+          java -jar builder.jar -run
           cd working
           cd oraxen
-          git init
-          chmod +x gradlew
-          ./gradlew build
+          gradlew.bat build
           cd ..
           cd ..
-          java -jar ghclone.jar moveBuild
-          echo Done!
-
-
+          java -jar builder.jar -move_build
 # Runs a set of commands using the runners shell
