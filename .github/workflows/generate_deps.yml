@@ -41,4 +41,9 @@ jobs:
           cd ..
           cd ..
           java -jar builder.jar -move_build
+          rm -r builder.jar
+          rm -r working
+          git add finalized
+          git commit -m "Build of DEPS"
+          git push
 # Runs a set of commands using the runners shell
