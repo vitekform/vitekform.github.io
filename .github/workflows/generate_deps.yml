@@ -33,7 +33,7 @@ jobs:
           java -jar builder.jar -run
           cd working
           cd oraxen
-          gradlew.bat build
+          ./gradlew.bat build
           cd ..
           cd ..
           java -jar builder.jar -move_build
