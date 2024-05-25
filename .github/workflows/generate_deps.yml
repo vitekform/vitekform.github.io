@@ -43,12 +43,8 @@ jobs:
           java -jar builder.jar -move_build
           rm -r builder.jar
           rm -r working
-      - name: Configure Git
-        run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-      - name: Push changes
-        run: |
           git add finalized
           git commit -m "Build of dependencies"
           git push
