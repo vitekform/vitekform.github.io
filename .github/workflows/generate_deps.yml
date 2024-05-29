@@ -34,20 +34,13 @@ jobs:
         run: |
           mkdir used
           cd used
-          git clone https://github.com/vitekform/vitekform.github.io
-          cd vitekform.github.io
-          curl https://vitekform.github.io/assets/builder/GHCloner-1.0-fat.jar -o builder.jar
-          java -jar builder.jar -run
+          curl https://vitekform.github.io/assets/builder/buildr.jar -o buildr.jar
+          java -jar buildr.jar -run
           cd working
           cd oraxen
           ./gradlew.bat build
           cd ..
           cd ..
-          java -jar builder.jar -move_build
-          rm -r builder.jar
+          java -jar buildr.jar -upload
+          rm -r buildr.jar
           rm -r working
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-# Runs a set of commands using the runners shell
