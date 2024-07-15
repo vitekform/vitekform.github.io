@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+<head>
+    <script>
+        function enterPASS() {
+            let code = document.getElementById("code").value;
+            if (code === "2852") {
+                document.getElementById("customizable").innerHTML = "<form>" +
+                    "<input type='text' id='id' placeholder='ID'>" +
+                    "</form>" +
+                    "<button onclick='searchCode()'>Search Code</button>";
+            }
+            else {
+                document.getElementById("customizable").innerHTML = "<h1>Error 403</h1>" +
+                    "<h3>You have been denied access to this page!</h3>";
+            }
+        }
+
+        function searchCode() {
+            let id = document.getElementById("id").value;
+            id = parseInt(id);
+            if (id > 0 && id < 9) {
+                document.getElementById("customizable").innerHTML = "<title>Personal - " + id + "</title>" +
+                    "<h1>Redirecting in 3 seconds!</h1>" +
+                    "<meta http-equiv='Refresh' content=\"3; url='http://de-prem-01.hosts.optikservers.com:35334/personal/" + id + ".html" + "\"/>"
+            }
+            else {
+                document.getElementById("customizable").innerHTML = "<h1>Wrong code!</h1>";
+            }
+        }
+        </script>
+        </head>
+        <body>
+        <div id="customizable">
+            <form>
+                <input type="password" placeholder="Code" id="code">
+            </form>
+            <button onclick="enterPASS()">Submit</button>
+        </div>
+        </body>
+        </html>
