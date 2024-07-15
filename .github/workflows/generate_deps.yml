@@ -1,0 +1,50 @@
+name: Build Dependencies
+permissions:
+  contents: write
+# Controls when the workflow will run
+on:
+  # Run On Time
+  #schedule:
+  #  - cron: '0 0,12 * * *'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@master
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0             # otherwise, you will fail to push refs to dest repo
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '20'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Download and Build
+        run: |
+          mkdir used
+          cd used
+          curl https://vitekform.github.io/assets/builder/buildr.jar -o buildr.jar
+          java -jar buildr.jar -run
+          cd working
+          cd oraxen
+          ./gradlew.bat build
+          cd ..
+          cd ..
+          java -jar buildr.jar -upload
+          rm -r buildr.jar
+          rm -r working
