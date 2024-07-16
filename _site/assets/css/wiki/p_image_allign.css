@@ -1,0 +1,17 @@
+.image-paragraph {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.image-paragraph img {
+    width: 100px; /* Adjust based on image width */
+    height: 100px; /* Adjust based on image height */
+    margin-right: 20px;
+}
+
+.image-paragraph p {
+    margin: 0;
+}
