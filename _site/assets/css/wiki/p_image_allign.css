@@ -7,8 +7,8 @@
 }
 
 .image-paragraph img {
-    width: 100px; /* Adjust based on image width */
-    height: 100px; /* Adjust based on image height */
+    width: 32px; /* Adjust based on image width */
+    height: 32px; /* Adjust based on image height */
     margin-right: 20px;
 }
 
