@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
     padding: 10px;
 }
 
@@ -13,5 +12,20 @@
 }
 
 .image-paragraph p {
+    margin: 0;
+}
+
+.image-paragraph2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 200px;
+    padding: 10px;
+}
+.image-paragraph2 img {
+    width: 32px; /* Adjust based on image width */
+    height: 32px; /* Adjust based on image height */
+    margin-right: 220px;
+}
+.image-paragraph2 p {
     margin: 0;
 }
